@@ -23,7 +23,7 @@ export default function EmiCalculatorPage() {
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="google-adsense-account" content="ca-pub-3782365559827375" />
-        <link rel="canonical" href="https://emimitra.online/emi-calculator" />
+        <link rel="canonical" href="https://emimitra.online" />
         <meta
           property="og:title"
           content="EMI Calculator - Product, Home Loan, Car Loan | EMI Mitra"
@@ -33,14 +33,8 @@ export default function EmiCalculatorPage() {
           content="Use EMI Mitra's EMI calculator to compute monthly payments for home loans, car loans, and products. Get detailed schedules and affordability insights."
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://emimitra.online/emi-calculator"
-        />
-        <meta
-          property="og:image"
-          content="https://www.emimitra.online/images/emi-calculator-og.jpg"
-        />
+        <meta property="og:url" content="https://emimitra.online" />
+        <meta property="og:image" content="https://www.emimitra.online" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -50,10 +44,7 @@ export default function EmiCalculatorPage() {
           name="twitter:description"
           content="Calculate EMIs for loans and products with EMI Mitra. Instant breakdowns and schedules for home loans, car loans, and more."
         />
-        <meta
-          name="twitter:image"
-          content="https://www.emimitra.online/images/emi-calculator-og.jpg"
-        />
+        <meta name="twitter:image" content="https://www.emimitra.online" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -63,13 +54,13 @@ export default function EmiCalculatorPage() {
               name: "EMI Calculator",
               description:
                 "Calculate EMIs for products, home loans, and car loans with EMI Mitra’s smart calculator.",
-              url: "https://www.emimitra.online/emi-calculator",
+              url: "https://www.emimitra.online",
               publisher: {
                 "@type": "Organization",
                 name: "EMI Mitra",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://www.emimitra.online/images/logo.png",
+                  url: "https://www.emimitra.online",
                 },
               },
             }),

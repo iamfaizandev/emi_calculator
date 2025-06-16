@@ -7,15 +7,15 @@ export const metadata: Metadata = {
   title: "EMI Calculator | Home Loan , Car Loan",
   description:
     "Calculate your EMI for products, home loans, and car loans with ease.",
-  keywords: ["EMI calculator", "loan calculator", "finance tool"],
+  keywords: ["EMI calculator", "loan calculator", "Emi Mitra", "finance tool"],
   openGraph: {
     title: "EMI Calculator",
     description: "Calculate your EMI with our user-friendly tool.",
-    url: "https://your-domain.com",
+    url: "https://emimitra.online/",
     siteName: "EMI Calculator",
     images: [
       {
-        url: "/og-image.png", // Place an image in public/
+        url: "/logo.png", // Place an image in public/
         width: 1200,
         height: 630,
       },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "EMI Calculator",
     description: "Calculate your EMI for various loans.",
-    images: ["/og-image.png"],
+    images: ["/logo.png"],
   },
 };
 
