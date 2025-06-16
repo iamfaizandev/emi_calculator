@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "EMI Calculator | Md Faizan Ahmad",
+  title: "EMI Calculator | Home Loan , Car Loan",
   description:
     "Calculate your EMI for products, home loans, and car loans with ease.",
   keywords: ["EMI calculator", "loan calculator", "finance tool"],
@@ -34,7 +35,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50">{children}</body>
+      <body className="bg-gray-50">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

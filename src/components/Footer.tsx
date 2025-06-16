@@ -1,71 +1,88 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Copyright } from "lucide-react";
+import Link from "next/link";
 
-const footerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
-const linkVariants = {
-  hover: { scale: 1.05, color: "#2563eb", transition: { duration: 0.2 } },
-};
-
-export const Footer: React.FC = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  // Ensure dynamic content (if any) only renders on client
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Hardcode year to avoid hydration issues; alternatively, use isClient for dynamic year
-  const currentYear = 2025;
-
-  // Minimal static render for SSR
-  if (!isClient) {
-    return (
-      <footer className="bg-gradient-to-br from-gray-50 to-white py-4 mt-8 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center text-sm text-gray-600">
-          <span>© {currentYear} </span>
-          <a
-            href="https://md-faizan-ahmad.web.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500"
-          >
-            Md Faizan Ahmad
-          </a>
-        </div>
-      </footer>
-    );
-  }
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
   return (
-    <motion.footer
-      initial="hidden"
-      animate="visible"
-      variants={footerVariants}
-      className="bg-gradient-to-br from-gray-50 to-white py-4 mt-8 border-t border-gray-200"
-      aria-label="Site footer"
+    <footer
+      className="bg-white dark:bg-gray-900 text-black dark:text-white py-10 px-4 sm:px-6 lg:px-8 mt-12"
+      aria-label="Footer"
+      itemScope
+      itemType="http://schema.org/Organization"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center text-sm text-gray-600 flex items-center justify-center gap-1">
-        <Copyright className="w-4 h-4" aria-hidden="true" />
-        <span>© {currentYear} </span>
-        <motion.a
-          href="https://md-faizan-ahmad.web.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          variants={linkVariants}
-          whileHover="hover"
-          className="text-blue-500 font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400"
-          aria-label="Visit Md Faizan Ahmad's portfolio"
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Column 1: About */}
+        <div>
+          <h3 className="text-lg font-semibold text-black dark:text-white mb-4">
+            About EMI Mitra
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300">
+            EMI Mitra is your personal EMI and loan assistant. Whether
+            you&apos;re planning a new phone, laptop, or any purchase, we help
+            you understand what fits your salary and budget. Simple, free, and
+            always accessible.
+          </p>
+        </div>
+
+        {/* Column 2: Quick Links */}
+        <nav aria-label="Footer quick links">
+          <h3 className="text-lg font-semibold text-black dark:text-white mb-4">
+            Quick Links
+          </h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link
+                href="/contact_us"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+              >
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/privacy-policy"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+              >
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/terms_of_use"
+                className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+              >
+                Terms of Use
+              </Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Column 3: Connect With Us */}
+        <address
+          className="not-italic"
+          itemProp="contactPoint"
+          itemType="http://schema.org/ContactPoint"
         >
-          Md Faizan Ahmad
-        </motion.a>
+          <h3 className="text-lg font-semibold text-black dark:text-white mb-4">
+            Connect With Us
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            <a
+              href="mailto:support@emimitra.online"
+              itemProp="email"
+              className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+            >
+              support@emimitra.online
+            </a>
+          </p>
+        </address>
       </div>
-    </motion.footer>
+      <div className="text-center text-xs text-gray-500 dark:text-gray-400 mt-10">
+        © {currentYear} <span itemProp="name">EMI Mitra</span>. All rights
+        reserved.
+      </div>
+    </footer>
   );
-};
+}
