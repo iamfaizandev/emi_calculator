@@ -10,6 +10,7 @@ import {
   Download,
   FileText,
   Wallet,
+  IndianRupee,
 } from "lucide-react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
@@ -373,110 +374,124 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
             {tabType === "salary" && (
               <>
                 {/* Loan Amount */}
-                <motion.div variants={inputVariants}>
-                  <label
-                    htmlFor="loanAmount"
-                    className="flex items-center text-base font-medium text-black"
-                  >
-                    <DollarSign
-                      className="w-4 h-4 mr-1 animate-pulse"
-                      aria-hidden="true"
-                    />{" "}
-                    Loan Amount (₹)
-                    <Info
-                      className="w-4 h-4 ml-1 hover:text-purple-500 transition-colors"
+                <motion.div
+                  variants={inputVariants}
+                  className="flex justify-between"
+                >
+                  <div>
+                    <label
+                      htmlFor="loanAmount"
+                      className="flex items-center text-base font-medium text-black"
+                    >
+                      <IndianRupee
+                        className="w-4 h-4 mr-1 animate-pulse"
+                        aria-hidden="true"
+                      />{" "}
+                      Loan Amount (₹)
+                      <Info
+                        className="w-4 h-4 ml-1 hover:text-purple-500 transition-colors"
+                        aria-describedby="loanAmount-desc"
+                      />
+                    </label>
+                    <input
+                      id="loanAmount"
+                      type="number"
+                      value={loanAmount}
+                      onChange={(e) => setLoanAmount(e.target.value)}
+                      placeholder="e.g., 300000"
+                      className="mt-1 block w-min border-blue-500 border-1 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
+                      min="0"
                       aria-describedby="loanAmount-desc"
                     />
-                  </label>
-                  <input
-                    id="loanAmount-range"
-                    type="range"
-                    min="10000"
-                    max="5000000"
-                    step="10000"
-                    value={loanAmount}
-                    onChange={(e) => setLoanAmount(e.target.value)}
-                    className="w-full mt-1 h-2 rounded-lg cursor-pointer transition-all"
-                    style={{
-                      background: `linear-gradient(to right, #bfdbfe ${getRangeProgress(
-                        loanAmount,
-                        10000,
-                        5000000
-                      )}, #e5e7eb ${getRangeProgress(
-                        loanAmount,
-                        10000,
-                        5000000
-                      )})`,
-                    }}
-                    aria-label="Adjust loan amount"
-                  />
-                  <input
-                    id="loanAmount"
-                    type="number"
-                    value={loanAmount}
-                    onChange={(e) => setLoanAmount(e.target.value)}
-                    placeholder="e.g., 300000"
-                    className="mt-1 block w-full border-blue-500 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
-                    min="0"
-                    aria-describedby="loanAmount-desc"
-                  />
-                  {errors.loanAmount && (
-                    <p role="alert" className="text-red-500 text-xs mt-1">
-                      {errors.loanAmount}
-                    </p>
-                  )}
+                    <input
+                      id="loanAmount-range"
+                      type="range"
+                      min="10000"
+                      max="5000000"
+                      step="10000"
+                      value={loanAmount}
+                      onChange={(e) => setLoanAmount(e.target.value)}
+                      className="w-55 mt-1 h-2  rounded-lg cursor-pointer transition-all"
+                      style={{
+                        background: `linear-gradient(to right, #bfdbfe ${getRangeProgress(
+                          loanAmount,
+                          10000,
+                          5000000
+                        )}, #e5e7eb ${getRangeProgress(
+                          loanAmount,
+                          10000,
+                          5000000
+                        )})`,
+                      }}
+                      aria-label="Adjust loan amount"
+                    />
+
+                    {errors.loanAmount && (
+                      <p role="alert" className="text-red-500 text-xs mt-1">
+                        {errors.loanAmount}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="salary"
+                      className="flex items-center text-base font-medium text-black"
+                    >
+                      <Wallet
+                        className="w-4 h-4 mr-1 animate-pulse"
+                        aria-hidden="true"
+                      />{" "}
+                      Your Salary (₹)
+                      <Info
+                        className="w-4 h-4 ml-1 hover:text-purple-500 transition-colors"
+                        aria-describedby="salary-desc"
+                      />
+                    </label>
+                    <input
+                      id="salary"
+                      type="number"
+                      value={salary}
+                      onChange={(e) => setSalary(e.target.value)}
+                      placeholder="e.g., 25000"
+                      className="mt-1 block w-min border-blue-500 border-1 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
+                      min="0"
+                      aria-describedby="salary-desc"
+                    />
+                    <input
+                      id="salary-range"
+                      type="range"
+                      min="10000"
+                      max="1000000"
+                      step="1000"
+                      value={salary}
+                      onChange={(e) => setSalary(e.target.value)}
+                      className="w-55 mt-1 h-2 rounded-lg cursor-pointer transition-all"
+                      style={{
+                        background: `linear-gradient(to right, #bfdbfe ${getRangeProgress(
+                          salary,
+                          10000,
+                          1000000
+                        )}, #e5e7eb ${getRangeProgress(
+                          salary,
+                          10000,
+                          1000000
+                        )})`,
+                      }}
+                      aria-label="Adjust salary"
+                    />
+                    {errors.salary && (
+                      <p role="alert" className="text-red-500 text-xs mt-1">
+                        {errors.salary}
+                      </p>
+                    )}
+                  </div>
                 </motion.div>
 
                 {/* Salary */}
-                <motion.div variants={inputVariants}>
-                  <label
-                    htmlFor="salary"
-                    className="flex items-center text-base font-medium text-black"
-                  >
-                    <Wallet
-                      className="w-4 h-4 mr-1 animate-pulse"
-                      aria-hidden="true"
-                    />{" "}
-                    Your Salary (₹)
-                    <Info
-                      className="w-4 h-4 ml-1 hover:text-purple-500 transition-colors"
-                      aria-describedby="salary-desc"
-                    />
-                  </label>
-                  <input
-                    id="salary-range"
-                    type="range"
-                    min="10000"
-                    max="1000000"
-                    step="1000"
-                    value={salary}
-                    onChange={(e) => setSalary(e.target.value)}
-                    className="w-full mt-1 h-2 rounded-lg cursor-pointer transition-all"
-                    style={{
-                      background: `linear-gradient(to right, #bfdbfe ${getRangeProgress(
-                        salary,
-                        10000,
-                        1000000
-                      )}, #e5e7eb ${getRangeProgress(salary, 10000, 1000000)})`,
-                    }}
-                    aria-label="Adjust salary"
-                  />
-                  <input
-                    id="salary"
-                    type="number"
-                    value={salary}
-                    onChange={(e) => setSalary(e.target.value)}
-                    placeholder="e.g., 25000"
-                    className="mt-1 block w-full border-blue-500 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
-                    min="0"
-                    aria-describedby="salary-desc"
-                  />
-                  {errors.salary && (
-                    <p role="alert" className="text-red-500 text-xs mt-1">
-                      {errors.salary}
-                    </p>
-                  )}
-                </motion.div>
+                <motion.div
+                  variants={inputVariants}
+                  className="mt-6"
+                ></motion.div>
 
                 {/* Desired EMI */}
                 <motion.div variants={inputVariants}>
@@ -744,7 +759,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                     htmlFor="productName"
                     className="flex items-center text-base font-medium text-black"
                   >
-                    <DollarSign
+                    <IndianRupee
                       className="w-4 h-4 mr-1 animate-pulse"
                       aria-hidden="true"
                     />{" "}
@@ -760,7 +775,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                     value={productName}
                     onChange={(e) => setProductName(e.target.value)}
                     placeholder="e.g., Home Loan"
-                    className="mt-1 block w-full border-blue-500 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
+                    className="mt-1 block w-full border-blue-500 border-1 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
                     aria-describedby="productName-desc"
                   />
                   {errors.productName && (
@@ -776,7 +791,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                     htmlFor="loanAmount"
                     className="flex items-center text-base font-medium text-black"
                   >
-                    <DollarSign
+                    <IndianRupee
                       className="w-4 h-4 mr-1 animate-pulse"
                       aria-hidden="true"
                     />{" "}
@@ -816,7 +831,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                     value={loanAmount}
                     onChange={(e) => setLoanAmount(e.target.value)}
                     placeholder="e.g., 100000"
-                    className="mt-1 block w-full border-blue-500 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
+                    className="mt-1 block w-full border-blue-500 border-1 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
                     min="0"
                     aria-describedby="loanAmount-desc"
                   />
@@ -833,7 +848,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                     htmlFor="downPayment"
                     className="flex items-center text-base font-medium text-black"
                   >
-                    <DollarSign
+                    <IndianRupee
                       className="w-4 h-4 mr-1 animate-pulse"
                       aria-hidden="true"
                     />{" "}
@@ -871,7 +886,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                     value={downPayment}
                     onChange={(e) => setDownPayment(e.target.value)}
                     placeholder="0"
-                    className="mt-1 block w-full border-blue-500 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
+                    className="mt-1 block w-full border-blue-500 border-1 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
                     min="0"
                     aria-describedby="downPayment-desc"
                   />
@@ -902,7 +917,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                     id="bankRate"
                     value={selectedBank}
                     onChange={(e) => setSelectedBank(e.target.value)}
-                    className="mt-1 block w-full border-blue-500 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
+                    className="mt-1 block w-min border-blue-500 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
                     aria-label="Select bank for interest rate"
                   >
                     {bankRates.map((bank) => (
@@ -935,7 +950,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                     value={interestRate}
                     onChange={(e) => setInterestRate(e.target.value)}
                     placeholder="e.g., 5"
-                    className="mt-1 block w-full border-blue-500 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
+                    className="mt-1 block w-full border-blue-500 border-1 bg-white text-black rounded-md p-2 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-600 hover:scale-105 transition-all"
                     min="0"
                     max="100"
                     step="0.01"
@@ -950,7 +965,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
 
                 {/* Tenure */}
                 <motion.div variants={inputVariants}>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mt-8">
                     <label
                       htmlFor="tenure"
                       className="flex items-center text-base font-medium text-black"
@@ -972,7 +987,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                           tenureUnit === "months" ? "years" : "months"
                         )
                       }
-                      className={`px-2 py-1 text-sm rounded-md transition-colors ${
+                      className={`px-2 py-1  text-sm rounded-md transition-colors ${
                         tenureUnit === "months"
                           ? "bg-blue-500 text-white"
                           : "bg-blue-200 text-black"
@@ -992,7 +1007,7 @@ export const EmiCalculator: React.FC<EmiCalculatorProps> = ({
                     step={tenureUnit === "years" ? 1 : 12}
                     value={tenure}
                     onChange={(e) => setTenureFromInput(e.target.value)}
-                    className="w-full mt-1 h-2 rounded-lg cursor-pointer transition-all"
+                    className="w-full mt-1 h-2 rounded-lg  cursor-pointer transition-all"
                     style={{
                       background: `linear-gradient(to right, #bfdbfe ${getRangeProgress(
                         tenure,

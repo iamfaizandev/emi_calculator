@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "EMI Calculator",
     images: [
       {
-        url: "/logo.png", // Place an image in public/
+        url: "logo.png", // Place an image in public/
         width: 1200,
         height: 630,
       },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "EMI Calculator",
     description: "Calculate your EMI for various loans.",
-    images: ["/logo.png"],
+    images: ["logo.png"],
   },
 };
 

@@ -1,10 +1,9 @@
-"use client";
-
 import { Header } from "@/components/header//Header";
 import { EmiCalculatorTabs } from "@/components/emitab/EmiTabs";
 import Footer from "@/components/Footer";
 import Head from "next/head";
 import { Analytics } from "@vercel/analytics/next";
+import EmiFaq from "@/components/emifaq/EmiFaq";
 
 export default function EmiCalculatorPage() {
   return (
@@ -17,12 +16,12 @@ export default function EmiCalculatorPage() {
         />
         <meta
           name="keywords"
-          content="EMI calculator, home loan calculator, car loan calculator, product EMI, loan EMI, monthly installment calculator, loan planner, EMI Mitra"
+          content="EMI calculator,payment calculator car loan,loan calculator car loan calculator,car loan calculator car loan calculator,loan calculator,car loan pay calculator, home loan calculator, car loan calculator, product EMI, loan EMI, monthly installment calculator, loan planner, EMI Mitra"
         />
+        <meta name="google-adsense-account" content="ca-pub-3782365559827375" />
         <meta name="author" content="EMI Mitra" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="google-adsense-account" content="ca-pub-3782365559827375" />
         <link rel="canonical" href="https://emimitra.online" />
         <meta
           property="og:title"
@@ -71,14 +70,14 @@ export default function EmiCalculatorPage() {
       <div itemScope itemType="http://schema.org/FinancialService">
         <Header />
         <main
-          className="min-h-screen bg-gray-50 dark:bg-white-900 flex flex-col items-center py-8"
+          className="min-h-screen mt-10 bg-gray-50 dark:bg-white-900 flex flex-col items-center py-8"
           itemProp="mainContentOfPage"
         >
           <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 px-4">
             <div className="flex-1">
               <EmiCalculatorTabs />
             </div>
-            <aside className="w-full lg:w-80 flex-shrink-0">
+            <aside className="w-full mt-6 lg:w-80 flex-shrink-0">
               <div className="bg-gray-200 dark:bg-gray-700 h-[250px] w-full rounded-lg flex items-center justify-center">
                 <p className="text-gray-500 dark:text-gray-400">
                   Ad Space (300x250)
@@ -87,6 +86,9 @@ export default function EmiCalculatorPage() {
             </aside>
           </div>
         </main>
+        <article>
+          <EmiFaq />
+        </article>
         <Footer />
       </div>
     </>
