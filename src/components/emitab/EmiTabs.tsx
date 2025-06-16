@@ -86,10 +86,10 @@ export const EmiCalculatorTabs: React.FC = () => {
             animate={value === index ? "active" : "inactive"}
             whileHover="hover"
             onClick={() => setValue(index)}
-            className={`cursor-pointer flex items-center flex-shrink-0 space-x-1 sm:space-x-2 px-3 sm:px-4 lg:px-7 py-2 text-xs sm:text-sm lg:text-base font-semibold transition-colors duration-300 ${
+            className={` cursor-pointer flex items-center flex-shrink-0 space-x-1 sm:space-x-2 px-3 sm:px-4 lg:px-7 py-2 text-xs sm:text-sm lg:text-base font-semibold transition-colors duration-300  ${
               value === index
-                ? "bg-blue-500 text-white shadow-md"
-                : "bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+                ? "bg-blue-500  text-white shadow-md"
+                : "bg-transparent  text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
             } rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300`}
             aria-label={`Select ${config.label} tab`}
             aria-selected={value === index}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "EMI Calculator | Home Loan , Car Loan",
@@ -35,6 +36,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
+      </Head>
       <body className="bg-gray-50">
         {children}
         <Analytics />
