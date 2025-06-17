@@ -4,14 +4,7 @@ import BankSelect from "./BankSelect";
 import TenureToggle from "./TenureToggle";
 import { EmiCalculatorProps, Errors } from "@/interface/types";
 import { motion } from "framer-motion";
-import {
-  Calendar,
-  DollarSign,
-  IndianRupee,
-  Info,
-  Percent,
-  Wallet,
-} from "lucide-react";
+import { Calendar, IndianRupee, Info, Percent, Wallet } from "lucide-react";
 
 interface LoanInputFormProps {
   tabType: EmiCalculatorProps["tabType"];
@@ -113,7 +106,7 @@ const LoanInputForm: React.FC<LoanInputFormProps> = ({
           placeholder="e.g., 5000"
           type="number"
           icon={
-            <DollarSign className="w-4 h-4 animate-pulse" aria-hidden="true" />
+            <IndianRupee className="w-4 h-4 animate-pulse" aria-hidden="true" />
           }
           error={errors.desiredEmi}
           min={0}
@@ -125,6 +118,24 @@ const LoanInputForm: React.FC<LoanInputFormProps> = ({
           selectedBank={selectedBank}
           setSelectedBank={setSelectedBank}
           bankRates={bankRates}
+        />
+        <InputField
+          id="interestRate"
+          label="Interest Rate (%)"
+          value={interestRate}
+          onChange={setInterestRate}
+          placeholder="e.g., 5"
+          type="number"
+          icon={
+            <Percent className="w-4 h-4 animate-pulse" aria-hidden="true" />
+          }
+          error={errors.interestRate}
+          min={0}
+          max={100}
+          step={0.01}
+          sliderMin={0}
+          sliderMax={100}
+          sliderStep={0.1}
         />
         <div className="space-y-2">
           <InputField
@@ -155,7 +166,7 @@ const LoanInputForm: React.FC<LoanInputFormProps> = ({
           placeholder="0"
           type="number"
           icon={
-            <DollarSign className="w-4 h-4 animate-pulse" aria-hidden="true" />
+            <IndianRupee className="w-4 h-4 animate-pulse" aria-hidden="true" />
           }
           error={errors.processingFee}
           min={0}
@@ -264,7 +275,7 @@ const LoanInputForm: React.FC<LoanInputFormProps> = ({
           placeholder="0"
           type="number"
           icon={
-            <DollarSign className="w-4 h-4 animate-pulse" aria-hidden="true" />
+            <IndianRupee className="w-4 h-4 animate-pulse" aria-hidden="true" />
           }
           error={errors.processingFee}
           min={0}

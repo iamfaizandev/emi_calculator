@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /private/
-Disallow: /admin/
-
-# Sitemap
-Sitemap: https://emimitra.online/sitemap.xml

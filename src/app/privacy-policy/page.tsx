@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
   return (
     <div>
       <Header />
-      <main className="max-w-3xl mx-auto p-4 pb-34  pt-20">
+      <main className="max-w-3xl mx-auto text-black p-4 pb-34  pt-20">
         <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
         <p className="text-white-700 text-2xl mb-4">
           At EMI Mitra, we value your privacy. We do not collect personal data

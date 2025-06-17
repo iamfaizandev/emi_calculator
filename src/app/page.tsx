@@ -1,94 +1,180 @@
-import { Header } from "@/components/header//Header";
-import { EmiCalculatorTabs } from "@/components/emitab/EmiTabs";
+import { Metadata } from "next";
+import { Header } from "@/components/header/Header";
+import { WelcomeServer } from "@/components/welcome/Welcome";
+import WelcomeClient from "@/components/welcome/WelcomeClient";
+import WelcomeMotion from "@/components/welcome/WelcomeMotion";
+import PwaInstall from "@/components/PWAinstall";
 import Footer from "@/components/Footer";
-import Head from "next/head";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import Link from "next/link";
 import EmiFaq from "@/components/emifaq/EmiFaq";
 
-export default function EmiCalculatorPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "EMI Mitra - Your Trusted EMI Calculator for Loans",
+    description:
+      "EMI Mitra offers easy EMI calculators for home loans, car loans, bike loans, product purchases, and salary-based loans. Calculate monthly payments instantly with accurate breakdowns.",
+    keywords:
+      "EMI calculator, home loan EMI calculator, car loan calculator, bike loan calculator, loan calculator, product EMI, salary-based loan, EMI Mitra",
+    authors: [
+      { name: "Emi Mitra Team ", url: "https://md-faizan-ahmad.web.app/" },
+    ],
+    robots: "index, follow",
+    viewport: "width=device-width, initial-scale=1",
+    alternates: {
+      canonical: "https://emimitra.online",
+    },
+    openGraph: {
+      title: "EMI Mitra - EMI Calculator for Loans",
+      description:
+        "Calculate EMIs for home loans, car loans, bike loans, and more with EMI Mitra’s user-friendly tools.",
+      url: "https://emimitra.online",
+      siteName: "EMI Mitra",
+      images: [
+        {
+          url: "/logo.png",
+          width: 1200,
+          height: 630,
+          alt: "EMI Mitra Logo",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "EMI Mitra - EMI Calculator for Loans",
+      description:
+        "Use EMI Mitra’s EMI calculators for accurate loan payment estimates.",
+      images: ["/logo.png"],
+    },
+    other: {
+      "google-adsense-account": "ca-pub-3782365559827375",
+    },
+  };
+}
+
+export default async function HomePage() {
+  const services = [
+    {
+      title: "Salary Calculator",
+      description:
+        "Calculate your in-hand salary with EMI Mitra’s Salary Calculator. Input your CTC, deductions, and tax regime to get a detailed breakup of monthly and annual take-home pay.",
+      tab: "salary",
+      url: "/salarycalculator",
+    },
+    {
+      title: "Product EMI Calculator",
+      description:
+        "Plan your purchases with EMI Mitra’s Product EMI Calculator. Compute monthly installments for electronics, furniture, or any product with ease. Get instant payment schedules to budget smartly.",
+      tab: "product",
+      url: "/emicalculator?tab=product",
+    },
+    {
+      title: "Home Loan EMI Calculator",
+      description:
+        "Calculate your home loan EMIs with EMI Mitra’s precise tool. Enter loan amount, interest rate, and tenure to get detailed monthly payment breakdowns and plan your dream home purchase.",
+      tab: "home",
+      url: "/emicalculator?tab=home",
+    },
+    {
+      title: "Car Loan Calculator",
+      description:
+        "Estimate your car loan EMIs using EMI Mitra’s Car Loan Calculator. Input loan details to see affordable monthly payments and schedules, making car financing simple and transparent.",
+      tab: "car",
+      url: "/emicalculator?tab=car",
+    },
+    {
+      title: "Bike Loan Calculator",
+      description:
+        "Get accurate bike loan EMIs with EMI Mitra’s Bike Loan Calculator. Calculate monthly payments based on loan amount and tenure to ride your dream bike without financial stress.",
+      tab: "bike",
+      url: "/emicalculator?tab=bike",
+    },
+    {
+      title: "Salary-Based Loan Calculator",
+      description:
+        "Discover loan affordability with EMI Mitra’s Salary-Based Calculator. Estimate EMIs based on your income, ensuring manageable payments for personal loans tailored to your financial capacity.",
+      tab: "salary-loan",
+      url: "/emicalculator?tab=salary",
+    },
+  ];
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    name: "EMI Mitra",
+    description:
+      "EMI Mitra provides EMI calculators for home loans, car loans, bike loans, product purchases, and salary-based loans.",
+    url: "https://emimitra.online",
+    publisher: {
+      "@type": "Organization",
+      name: "EMI Mitra",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://emimitra.online/logo.png",
+      },
+    },
+  };
+
   return (
     <>
-      <Head>
-        <title>EMI Calculator - Product, Home Loan, Car Loan | EMI Mitra</title>
-        <meta
-          name="description"
-          content="Calculate EMIs for products, home loans, and car loans with EMI Mitra's smart EMI calculator. Get instant monthly payment breakdowns, loan schedules, and affordability checks."
-        />
-        <meta
-          name="keywords"
-          content="EMI calculator,payment calculator car loan,loan calculator car loan calculator,car loan calculator car loan calculator,loan calculator,car loan pay calculator, home loan calculator, car loan calculator, product EMI, loan EMI, monthly installment calculator, loan planner, EMI Mitra"
-        />
-        <meta name="google-adsense-account" content="ca-pub-3782365559827375" />
-        <meta name="author" content="EMI Mitra" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://emimitra.online" />
-        <meta
-          property="og:title"
-          content="EMI Calculator - Product, Home Loan, Car Loan | EMI Mitra"
-        />
-        <meta
-          property="og:description"
-          content="Use EMI Mitra's EMI calculator to compute monthly payments for home loans, car loans, and products. Get detailed schedules and affordability insights."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://emimitra.online" />
-        <meta property="og:image" content="https://www.emimitra.online" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="EMI Calculator - Product, Home Loan, Car Loan | EMI Mitra"
-        />
-        <meta
-          name="twitter:description"
-          content="Calculate EMIs for loans and products with EMI Mitra. Instant breakdowns and schedules for home loans, car loans, and more."
-        />
-        <meta name="twitter:image" content="https://www.emimitra.online" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "http://schema.org",
-              "@type": "WebPage",
-              name: "EMI Calculator",
-              description:
-                "Calculate EMIs for products, home loans, and car loans with EMI Mitra’s smart calculator.",
-              url: "https://www.emimitra.online",
-              publisher: {
-                "@type": "Organization",
-                name: "EMI Mitra",
-                logo: {
-                  "@type": "ImageObject",
-                  url: "https://www.emimitra.online",
-                },
-              },
-            }),
-          }}
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Analytics />
+      <SpeedInsights />
       <div itemScope itemType="http://schema.org/FinancialService">
         <Header />
-        <main
-          className="min-h-screen mt-10 bg-gray-50 dark:bg-white-900 flex flex-col items-center py-8"
-          itemProp="mainContentOfPage"
-        >
-          <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 px-4">
-            <div className="flex-1">
-              <EmiCalculatorTabs />
+        <main className="min-h-screen bg-gray-50 dark:bg-white-900 flex flex-col items-center py-8">
+          <WelcomeMotion>
+            <WelcomeServer />
+          </WelcomeMotion>
+          <WelcomeClient />
+          <section className="w-full max-w-5xl mx-auto px-4 py-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white text-center mb-8">
+              Our EMI Calculator Services
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white dark:bg-white rounded-lg shadow-md p-6"
+                >
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-black mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-black mb-4">
+                    {service.description}
+                  </p>
+
+                  <Link href={service.url}>
+                    <button className="px-4 cursor-pointer py-2 bg-black text-white rounded-lg hover:bg-blue-600 transition-colors">
+                      Calculate Now
+                    </button>
+                  </Link>
+                </div>
+              ))}
             </div>
-            <aside className="w-full mt-6 lg:w-80 flex-shrink-0">
-              <div className="bg-gray-200 dark:bg-gray-700 h-[250px] w-full rounded-lg flex items-center justify-center">
-                <p className="text-gray-500 dark:text-gray-400">
-                  Ad Space (300x250)
-                </p>
-              </div>
-            </aside>
-          </div>
-        </main>
-        <article>
+          </section>
+          {/* AdSense Placeholder */}
+          {/* Uncomment and add Google AdSense script after approval */}
+          {/* <aside className="w-full max-w-5xl mx-auto px-4 py-6 bg-gray-200 dark:bg-gray-700 rounded-lg text-center">
+            <h3 className="text-lg font-semibold text-black dark:text-white mb-2">
+              Sponsored Content
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">
+              AdSense ads will be displayed here once approved (ca-pub-3782365559827375).
+            </p>
+            {/* Replace with actual ad code, e.g.:
+            <Script async src="https://pagead2.googlesyndication.com/pagead/js/ads.js?client=ca-pub-3782365559827375"></Script>
+            <ins className="adsbygoogle"></ins>
+          </aside> 
+            */}
+          <PwaInstall />
           <EmiFaq />
-        </article>
+        </main>
         <Footer />
       </div>
     </>

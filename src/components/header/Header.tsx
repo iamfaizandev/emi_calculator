@@ -3,8 +3,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import logo from "@/assets/logo.png";
+import { Calculator } from "lucide-react";
 
 // Explicitly type headerVariants as Variants
 const headerVariants: Variants = {
@@ -25,7 +24,7 @@ export const Header: React.FC = () => {
       initial="hidden"
       animate="visible"
       variants={headerVariants}
-      className="bg-gradient-to-r from-blue-100 via-cyan-50 to-blue-100 dark:from-white-900 dark:via-green-900 dark:to-blue-900 shadow-md py-4 px-4 sm:px-6"
+      className="bg-gradient-to-r from-blue-100 via-cyan-50 to-blue-100 dark:from-blue-900 dark:via-blue-900 dark:to-blue-900 shadow-md py-4 px-4 sm:px-6"
       aria-label="Main header"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -35,17 +34,21 @@ export const Header: React.FC = () => {
           className="flex items-center hover:scale-105 transition-transform"
         >
           <div className="font-bold text-black dark:text-white flex items-center">
-            <Image
-              src={logo}
-              alt="EMI Calculator Logo"
-              width={42}
-              height={52}
-              className="mr-2 object-contain"
-              priority
-            />
-            <span>EMI Calc</span>
+            <Calculator />
+            <h1 className="text-3xl">Emi Mitra</h1>
           </div>
         </Link>
+        <div className="bold flex items-center justify-between">
+          <Link href="/" className="me-6">
+            Home
+          </Link>
+          <Link href="/about" className="me-2">
+            About
+          </Link>
+          <Link href="/emifaq" className="ms-4">
+            EMI FAQ
+          </Link>
+        </div>
       </div>
     </motion.header>
   );

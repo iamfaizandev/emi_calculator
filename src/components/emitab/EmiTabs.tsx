@@ -1,8 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ShoppingCart, Home, Car, Wallet } from "lucide-react";
 import EmiCalculatorPage from "@/components/emicalculator/EmiCalculatorPage";
+import { Header } from "../header/Header";
+import Footer from "../Footer";
+import PwaInstall from "../PWAinstall";
 
 const tabVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -68,17 +71,16 @@ export const EmiCalculatorTabs: React.FC = () => {
       },
     },
   ];
-
+  const [userName, setUserName] = useState<string | null>(null);
+  useEffect(() => {
+    const storedName = localStorage.getItem("userName");
+    setUserName(storedName || null);
+  }, []);
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={tabVariants}
-      className="max-w-3xl cursor-pointer mx-auto bg-gradient-to-br from-gray-50 to-white dark:from-white-800 dark:to-white-900 rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8"
-    >
-      {/* Custom Tabs */}
+    <div>
+      <Header />
       <nav
-        className="flex overflow-x-auto whitespace-nowrap scrollbar-hide bg-gray-100 dark:bg-gray-700 rounded-full p-1.5 sm:p-2"
+        className="flex overflow-x-hide w-min mt-8 m-auto mb-4 whitespace-nowrap scrollbar-hide bg-gray-100 dark:bg-black text-white  p-1.9 sm:p-2"
         aria-label="EMI Calculator Tabs"
         role="tablist"
       >
@@ -89,11 +91,11 @@ export const EmiCalculatorTabs: React.FC = () => {
             animate={value === index ? "active" : "inactive"}
             whileHover="hover"
             onClick={() => setValue(index)}
-            className={`cursor-pointer flex items-center flex-shrink-0 space-x-1 sm:space-x-2 px-3 sm:px-4 lg:px-7 py-2 text-xs sm:text-sm lg:text-base font-semibold transition-colors duration-300 ${
+            className={`cursor-pointer flex items-center flex-shrink-0 space-x-1 sm:space-x-2 px-3 sm:px-4 lg:px-9 py-2 text-xs sm:text-sm lg:text-base font-semibold transition-colors duration-300 ${
               value === index
-                ? "bg-blue-500 text-white shadow-md"
+                ? "bg-blue-500 mt-1 mb-1 me-1 ms-1  text-white shadow-md"
                 : "bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
-            } rounded-full focus:outline-none focus:ring-2 focus:ring-blue-300`}
+            }  focus:outline-none focus:ring-2 focus:ring-blue-300`}
             aria-label={`Select ${config.label} tab`}
             aria-selected={value === index}
             role="tab"
@@ -103,29 +105,47 @@ export const EmiCalculatorTabs: React.FC = () => {
           </motion.button>
         ))}
       </nav>
-
-      {/* Tab Content */}
-      <div className="mt-4 sm:mt-6 lg:mt-8">
-        {emiConfigs.map((config, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: value > index ? -20 : 20 }}
-            animate={{
-              opacity: value === index ? 1 : 0,
-              x: value === index ? 0 : value > index ? -20 : 20,
-            }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className={`${
-              value === index ? "block" : "hidden"
-            } bg-white dark:bg-white-800 rounded-lg p-4 sm:p-6 lg:p-8 shadow-inner`}
-          >
-            <EmiCalculatorPage
-              defaultValues={config.defaultValues}
-              tabType={config.tabType}
-            />
-          </motion.div>
-        ))}
+      <div className="m-4 text-black text-center">
+        <h2 className="text-base sm:text-lg font-semibold text-red-900 dark:text-black">
+          {userName
+            ? `Hello, ${userName}! Please fill Fields"`
+            : "Hello! Please fill Fields"}
+        </h2>
+        Default Amount is Filled Please Enter Your Amount
       </div>
-    </motion.div>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={tabVariants}
+        className="max-w-3xl cursor-pointer mt-8 mx-auto bg-gradient-to-br from-gray-50 to-white dark:from-white-800 dark:to-white-900 rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8"
+      >
+        {/* Custom Tabs */}
+
+        {/* Tab Content */}
+        <div className="mt-4 sm:mt-6 lg:mt-8">
+          {emiConfigs.map((config, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: value > index ? -20 : 20 }}
+              animate={{
+                opacity: value === index ? 1 : 0,
+                x: value === index ? 0 : value > index ? -20 : 20,
+              }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className={`${
+                value === index ? "block" : "hidden"
+              } bg-white dark:bg-white-800 rounded-lg p-4 sm:p-6 lg:p-8 shadow-inner`}
+            >
+              <EmiCalculatorPage
+                defaultValues={config.defaultValues}
+                tabType={config.tabType}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+      <PwaInstall />
+      <Footer />
+    </div>
   );
 };
