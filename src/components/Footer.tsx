@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Column 1: About */}
         <div>
-          <Image src={logo} alt="" className="fit h-40 w-40" />
+          <Image src={logo} alt="Emi Mitra Logo" className="fit h-40 w-40" />
           <h3 className="text-lg font-semibold text-black dark:text-white mb-4">
             About EMI Mitra
           </h3>
@@ -36,6 +36,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             <li>
               <Link
+                title="ContactUs"
                 href="/contact_us"
                 className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
               >
@@ -44,6 +45,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
+                title="Privacy Policy"
                 href="/privacy-policy"
                 className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
               >
@@ -52,6 +54,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
+                title="Terms of Use"
                 href="/terms_of_use"
                 className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
               >
@@ -72,6 +75,7 @@ export default function Footer() {
           </h3>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
             <a
+              title="Email us"
               href="mailto:mdfaizan7563@gmail.com"
               itemProp="email"
               className="hover:text-blue-500 dark:hover:text-blue-400 transition-colors"

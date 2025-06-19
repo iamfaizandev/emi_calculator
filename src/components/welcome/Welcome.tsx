@@ -5,15 +5,15 @@ interface WelcomeProps {
 const Welcome: React.FC<WelcomeProps> = ({ initialGreeting }) => {
   return (
     <div
-      className="text-center mt-8 py-8 bg-gradient-to-r p-8 bg-white-600 rounded-lg shadow-lg max-w-2xl mx-auto"
+      className="text-center  mt-8 py-8 bg-gradient-to-r p-8 bg-white-600 rounded-lg  max-w-2xl mx-auto"
       id="welcome-container"
     >
-      <h1
+      <div
         id="welcome-greeting"
-        className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-black"
+        className=" sm:text-2xl w-full font-bold text-gray-900 dark:text-black"
       >
-        {initialGreeting}! Welcome to EMI Mitra
-      </h1>
+        {initialGreeting}! Welcome to <h1>Emi Mitra</h1>
+      </div>
       <form id="welcome-form" className="flex flex-col items-center gap-4 mt-4">
         <input
           id="welcome-input"

@@ -39,13 +39,13 @@ export const Header: React.FC = () => {
           </div>
         </Link>
         <div className="bold flex items-center justify-between">
-          <Link href="/" className="me-6">
+          <Link title="Home" href="/" className="me-6">
             Home
           </Link>
-          <Link href="/about" className="me-2">
+          <Link title="About" href="/about" className="me-2">
             About
           </Link>
-          <Link href="/emifaq" className="ms-4">
+          <Link href="/emifaq" title="FAQ" className="ms-4">
             EMI FAQ
           </Link>
         </div>

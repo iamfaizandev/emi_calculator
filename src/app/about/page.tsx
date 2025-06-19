@@ -43,7 +43,7 @@ const About = () => {
               <li>Free, reliable, and easy-to-use tools for all users.</li>
             </ul>
             <div className="text-center">
-              <Link href="/emicalculator">
+              <Link title="Calculate Button" href="/emicalculator">
                 <button className="px-6 cursor-pointer py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
                   Start Calculating Now
                 </button>

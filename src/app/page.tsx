@@ -21,7 +21,6 @@ export async function generateMetadata(): Promise<Metadata> {
       { name: "Emi Mitra Team ", url: "https://md-faizan-ahmad.web.app/" },
     ],
     robots: "index, follow",
-    viewport: "width=device-width, initial-scale=1",
     alternates: {
       canonical: "https://emimitra.online",
     },
@@ -62,6 +61,14 @@ export default async function HomePage() {
         "Calculate your in-hand salary with EMI Mitra’s Salary Calculator. Input your CTC, deductions, and tax regime to get a detailed breakup of monthly and annual take-home pay.",
       tab: "salary",
       url: "/salarycalculator",
+    },
+    {
+      title: "Resume Page Builder",
+      description:
+        "Enter your details, choose a style, and download a professional PDF — no login, no data stored. Perfect for freshers and job seekers ",
+
+      tab: "ResumeBuilder",
+      url: "/resume_builder",
     },
     {
       title: "Product EMI Calculator",
@@ -133,7 +140,7 @@ export default async function HomePage() {
           </WelcomeMotion>
           <WelcomeClient />
           <section className="w-full max-w-5xl mx-auto px-4 py-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-blue text-center mb-8">
               Our EMI Calculator Services
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -149,9 +156,9 @@ export default async function HomePage() {
                     {service.description}
                   </p>
 
-                  <Link href={service.url}>
+                  <Link title="Calculate Button" href={service.url}>
                     <button className="px-4 cursor-pointer py-2 bg-black text-white rounded-lg hover:bg-blue-600 transition-colors">
-                      Calculate Now
+                      Try It
                     </button>
                   </Link>
                 </div>
